@@ -1,50 +1,51 @@
 const mongoose = require('mongoose');
 
+const parentSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    first_name: { type: String, require: true },
+    last_name: { type: String, require: true },
+    phone: { type: String, require: true },
+    relation: {
+        type: String,
+        require: true,
+        enum: ['mother', 'father', 'other'],
+    },
+    address: { type: String, require: true },
+});
+
 const userSchema = mongoose.Schema(
     {
         _id: mongoose.Schema.Types.ObjectId,
-        email: {
+        studentId: {
             type: String,
             require: true,
-            unique: true,
         },
         password: {
             type: String,
             require: true,
         },
-        active: {
-            type: Boolean,
-            default: false,
-        },
-        otp: {
+        class: {
             type: String,
-            required: true,
+            require: true,
         },
-        first_name: { type: String },
-        last_name: { type: String },
+        instituteId: { type: mongoose.Schema.Types.ObjectId, ref: 'Institute', require: true },
+        first_name: { type: String, require: true },
+        last_name: { type: String, require: true },
         dob: {
             type: Date,
+            require: true,
         },
-        phone: { type: String },
-        gender: { type: String, enum: ['m', 'f', 'o'] },
-        alt_phone: { type: String },
-        address: { type: String },
-        emergency: {
-            name: {
-                type: String,
-            },
-            phone: {
-                type: String,
-            },
-            relation: {
-                type: String,
-            },
-        },
-        history: {
+        phone: { type: String, require: true },
+        gender: { type: String, require: true, enum: ['m', 'f', 'o'] },
+        address: { type: String, require: true },
+        p_address: { type: String, require: true },
+        p_first_name: { type: String, require: true },
+        p_last_name: { type: String, require: true },
+        p_phone: { type: String, require: true },
+        p_relation: {
             type: String,
-        },
-        treatments: {
-            type: String,
+            require: true,
+            enum: ['mother', 'father', 'other'],
         },
     },
     {

@@ -8,200 +8,235 @@ const otpGenerator = require('otp-generator');
 const nodemailer = require('nodemailer');
 const sendMail = require('../helper/sendmail');
 const checkAuth = require('../middleware/checkAuth');
+const checkUserAuth = require('../middleware/checkUserAuth');
 
-router.post('/send_otp', async (req, res, next) => {
-    res.status(201).json({ otp: otp });
+const multer = require('multer');
+const csv = require('csvtojson');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        // Change the filename to use the original filename with a timestamp
+        cb(null, new Date().toISOString() + file.originalname);
+    },
 });
 
-router.post('/signup', (req, res, next) => {
-    const otp = otpGenerator.generate(4, {
-        lowerCaseAlphabets: false,
-        specialChars: false,
-        upperCaseAlphabets: false,
-    });
+const fileFilter = (req, file, cb) => {
+    // Check if the file is a CSV file
+    if (file.mimetype === 'text/csv') {
+        cb(null, true);
+    } else {
+        // Reject the file if it is not a CSV file
+        cb(null, false);
+    }
+};
 
-    console.log(req.body.email);
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 0.5, // Limit the file size to 500KB (adjust as needed)
+    },
+    fileFilter: fileFilter,
+});
 
-    User.find({ email: req.body.email })
+router.post('/add_user', checkAuth, (req, res, next) => {
+    if (
+        !req.body.studentId ||
+        !req.body.password ||
+        !req.body.instituteId ||
+        !req.body.first_name ||
+        !req.body.last_name ||
+        !req.body.dob ||
+        !req.body.phone ||
+        !req.body.gender ||
+        !req.body.address ||
+        !req.body.class ||
+        !req.body.p_first_name ||
+        !req.body.p_last_name ||
+        !req.body.p_relation ||
+        !req.body.p_phone ||
+        !req.body.p_address
+    ) {
+        return res.status(404).json({ message: 'All fields are required' });
+    }
+
+    User.find({ studentId: req.body.studentId })
         .exec()
         .then((user) => {
-            // console.log(user);
             if (user.length >= 1) {
-                // check if email already exist and its status is active
-                if (user[0].active === true) return res.status(422).json({ message: `User already exist` });
-                // if email already exist but its status not true
-                else if (user[0].active === false) {
-                    bcrypt.hash(req.body.password, 10, async (err, hash) => {
-                        if (err) {
-                            return res.status(500).json({ error: err, msg: 'bcrypt failed' });
-                        } else {
-                            await sendMail(otp, req.body.email);
-                            User.updateOne(
-                                { email: user[0].email },
-                                {
-                                    $set: { password: hash, otp: otp },
-                                }
-                            )
-                                .then((result) => {
-                                    res.status(201).json({
-                                        _id: result._id,
-                                        email: result.email,
-                                        message: 'user created with update 1',
-                                    });
-                                })
-                                .catch((err) => {
-                                    res.status(500).json({ error: 'error2' });
-                                });
-                            // res.status(201).json({ message: 'Update user' });
-                        }
-                    });
-                }
+                return res.status(404).json({ message: 'Student Already Exist' });
             } else {
-                bcrypt.hash(req.body.password, 10, async (err, hash) => {
-                    if (err) {
-                        return res.status(500).json({ error: err, msg: 'bcrypt failed' });
-                    } else {
-                        const user = new User({
-                            _id: new mongoose.Types.ObjectId(),
-                            email: req.body.email,
-                            password: hash,
-                            otp: otp,
-                        });
-                        await sendMail(otp, req.body.email);
-                        user.save()
-                            .then((result) => {
-                                res.status(201).json({ _id: result._id, email: result.email, message: 'user created' });
-                            })
-                            .catch((err) => {
-                                res.status(500).json({ error: err, message: 'error3' });
-                            });
-                    }
+                const newUser = new User({
+                    _id: new mongoose.Types.ObjectId(),
+                    studentId: req.body.studentId,
+                    password: req.body.password,
+                    instituteId: req.body.instituteId,
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    dob: new Date(req.body.dob),
+                    phone: req.body.phone,
+                    gender: req.body.gender,
+                    address: req.body.address,
+                    class: req.body.class,
+                    parent: {
+                        first_name: req.body.p_first_name,
+                        last_name: req.body.p_last_name,
+                        phone: req.body.p_phone,
+                        relation: req.body.p_relation,
+                        address: req.body.p_address,
+                    },
                 });
-            }
-        });
-});
-
-router.post('/verify_otp', (req, res, next) => {
-    User.find({ email: req.body.email })
-        .exec()
-        .then((user) => {
-            if (user.length < 1) {
-                return res.status(401).json({ message: 'Email not exist' });
-            } else if (user[0].otp !== req.body.otp) {
-                return res.status(401).json({ message: 'Otp is invalid' });
-            } else {
-                User.updateOne(
-                    { email: user[0].email },
-                    {
-                        $set: { active: true },
-                    }
-                )
+                newUser
+                    .save()
                     .then((result) => {
-                        res.status(201).json({
+                        return res.status(201).json({
                             _id: result._id,
-                            email: result.email,
-                            message: 'Otp verified',
+                            message: 'Student Created',
                         });
                     })
                     .catch((err) => {
-                        res.status(500).json({ error: 'error4' });
+                        return res.status(500).json({
+                            message: 'Something Went Wrong',
+                            error: err,
+                        });
                     });
             }
+        })
+        .catch((err) => {
+            return res.status(500).json({ message: 'Something went wrong', error: err });
+        });
+});
+
+router.patch('/update_user', checkAuth, (req, res, next) => {
+    // if (
+    //     !req.body.studentId ||
+    //     !req.body.password ||
+    //     !req.body.instituteId ||
+    //     !req.body.first_name ||
+    //     !req.body.last_name ||
+    //     !req.body.dob ||
+    //     !req.body.phone ||
+    //     !req.body.gender ||
+    //     !req.body.address ||
+    //     !req.body.class ||
+    //     !req.body.p_first_name ||
+    //     !req.body.p_last_name ||
+    //     !req.body.p_relation ||
+    //     !req.body.p_phone ||
+    //     !req.body.p_address
+    // ) {
+    //     return res.status(404).json({ message: 'All fields are required' });
+    // }
+
+    User.updateOne({ studentId: req.body.studentId })
+        .exec()
+        .then((user) => {
+            User(
+                { studentId: req.body.studentId },
+                {
+                    $set: {
+                        password: req.body.password,
+                        first_name: req.body.first_name,
+                        last_name: req.body.last_name,
+                        dob: new Date(req.body.dob),
+                        phone: req.body.phone,
+                        gender: req.body.gender,
+                        address: req.body.address,
+                        class: req.body.class,
+                        parent: {
+                            first_name: req.body.p_first_name,
+                            last_name: req.body.p_last_name,
+                            phone: req.body.p_phone,
+                            relation: req.body.p_relation,
+                            address: req.body.p_address,
+                        },
+                    },
+                }
+            )
+                .then((result) => {
+                    return res.status(201).json({
+                        _id: result._id,
+                        message: 'Student Updated',
+                    });
+                })
+                .catch((err) => {
+                    return res.status(500).json({
+                        message: 'Something Went Wrong',
+                        error: err,
+                    });
+                });
+        })
+        .catch((err) => {
+            return res.status(500).json({ message: 'Something went wrong', error: err });
         });
 });
 
 router.post('/login', (req, res, next) => {
-    User.find({ email: req.body.email })
+    User.find({ studentId: req.body.studentId })
         .exec()
         .then((user) => {
-            if (user.length < 1 || user[0].active === false) {
-                return res.status(401).json({ message: 'Auth failed' });
+            if (user.length < 1) {
+                return res.status(401).json({ message: 'Please confirm id and password from your institute' });
             }
-            bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-                if (err) {
-                    return res.status(401).json({ message: 'Auth failed' });
-                }
-                if (result) {
-                    const token = jwt.sign(
-                        {
-                            email: user[0].email,
-                            userId: user[0]._id,
-                        },
-                        'moinuddin',
-                        {
-                            expiresIn: '1h',
-                        }
-                    );
+            if (user[0].studentId === req.body.studentId && user[0].password === req.body.password) {
+                const token = jwt.sign(
+                    {
+                        studentId: user[0].studentId,
+                        userId: user[0]._id,
+                    },
+                    process.env.JWT_SECRET_USER,
+                    {
+                        expiresIn: '1h',
+                    }
+                );
 
-                    return res.status(200).json({ message: 'Auth successful', token: token });
-                }
-                res.status(401).json({ message: 'Auth failed' });
-            });
+                return res.status(200).json({ message: 'Auth successful', token: token });
+            }
+            res.status(401).json({ message: 'Auth failed' });
         })
         .catch((err) => {
             res.status(500).json({ error: err });
         });
 });
 
-router.post('/add_user', checkAuth, (req, res, next) => {
-    User.find({ email: req.body.email })
+router.post('/add_bulk', checkAuth, upload.single('userCollection'), (req, res, next) => {
+    csv()
+        .fromFile(req.file.path)
+        .then((data) => {
+            const users = [];
+
+            data.forEach((item, i) => {
+                users.push({
+                    ...item,
+                    instituteId: req.body.instituteId,
+                });
+            });
+
+            console.log(users);
+            User.insertMany(users)
+                .then((result) => {
+                    return res.status(201).json({ message: 'Bulk Students uploaded' });
+                })
+                .catch((err) => {
+                    return res.status(500).json({ message: 'Something went wrong' });
+                });
+        })
+        .catch((err) => console.log('Something went wrong'));
+});
+
+router.delete('/:id', checkAuth, (req, res, next) => {
+    const id = req.params.userId;
+
+    User.deleteOne({ _id: id })
         .exec()
         .then((user) => {
-            if (user.length < 1 || user[0].active === false) {
-                return res.status(404).json({ message: 'User not exists' });
-            } else {
-                User.updateOne(
-                    { email: user[0].email },
-                    {
-                        $set: {
-                            first_name: req.body.firstName,
-                            last_name: req.body.lastName,
-                            phone: req.body.phone,
-                            dob: req.body.dob,
-                            gender: req.body.gender,
-                            address: req.body.address,
-                        },
-                    }
-                )
-                    .then((result) => {
-                        res.status(201).json({
-                            _id: result._id,
-                            email: result.email,
-                            message: 'user added',
-                        });
-                    })
-                    .catch((err) => {
-                        res.status(500).json({ error: 'error4' });
-                    });
-            }
+            res.status(200).json({ user: user, message: 'user deleted' });
+        })
+        .catch((err) => {
+            res.status(500).json({ error: err });
         });
 });
-
-router.post('/is_new', checkAuth, (req, res, next) => {
-    User.find({ email: req.body.email })
-        .exec()
-        .then((user) => {
-            console.log(user[0].phone);
-            if (user[0].phone) {
-                res.status(201).json({ isNew: false, message: 'user details already filled' });
-            } else {
-                res.status(201).json({ isNew: true, message: 'user is new' });
-            }
-        })
-        .catch((err) => res.status(500).json({ err: err, message: 'something went wrong' }));
-});
-
-// router.delete('/:userId', (req, res, next) => {
-//     const id = req.params.userId;
-
-//     User.remove({ _id: id })
-//         .exec()
-//         .then((user) => {
-//             res.status(200).json({ user: user, message: 'user deleted' });
-//         })
-//         .catch((err) => {
-//             res.status(500).json({ error: err });
-//         });
-// });
 
 module.exports = router;

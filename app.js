@@ -5,13 +5,15 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 mongoose.set('strictQuery', true);
-mongoose.connect(`mongodb+srv://${process.env.EMAIL}:${process.env.PASS}@thesyahi.z4bkdpz.mongodb.net/booknmeet`);
+mongoose.connect(`mongodb+srv://${process.env.EMAIL}:${process.env.PASS}@cluster0.yfz8i.mongodb.net/CrackExam`);
 //
 
 // const productRouter = require('./api/routes/product');
 // const orderRouter = require('./api/routes/orders');
 const userRouter = require('./api/routes/user');
-const appointmentRouter = require('./api/routes/appointment');
+const instituteRouter = require('./api/routes/institue');
+const examRouter = require('./api/routes/exam');
+const questionRouter = require('./api/routes/question');
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
@@ -44,7 +46,9 @@ app.use(function (req, res, next) {
 // app.use('/products', productRouter);
 // app.use('/orders', orderRouter);
 app.use('/users', userRouter);
-app.use('/appointments', appointmentRouter);
+app.use('/institutes', instituteRouter);
+app.use('/exams', examRouter);
+app.use('/questions', questionRouter);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

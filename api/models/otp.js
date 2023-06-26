@@ -1,23 +1,21 @@
 const mongoose = require('mongoose');
 
-const appointmentSchema = mongoose.Schema(
+const otpSchema = mongoose.Schema(
     {
         _id: mongoose.Schema.Types.ObjectId,
-        type: {
-            type: String,
-            enum: ['new', 'followup'],
-        },
-        reason: {
-            type: String,
-        },
-        date: {
-            type: Date,
-        },
         email: {
             type: String,
+            require: true,
+            unique: true,
         },
-        hospital: {
+        otp: {
             type: String,
+            require: true,
+        },
+        type: {
+            type: String,
+            require: true,
+            enum: ['S', 'I'],
         },
     },
     {
@@ -28,4 +26,4 @@ const appointmentSchema = mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('Appointment', appointmentSchema);
+module.exports = mongoose.model('Otp', otpSchema);

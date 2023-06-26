@@ -1,0 +1,509 @@
+[
+    {
+      "questionText": "What is the chemical formula for water?",
+      "optionText": "H2O",
+      "isCorrect": true,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the chemical formula for water?",
+      "optionText": "CO2",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the chemical formula for water?",
+      "optionText": "NH3",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the chemical formula for water?",
+      "optionText": "C6H12O6",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which gas is known as the 'laughing gas'?",
+      "optionText": "Nitrous oxide",
+      "isCorrect": true,
+      "type": "A"
+    },
+    {
+      "questionText": "Which gas is known as the 'laughing gas'?",
+      "optionText": "Carbon dioxide",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "Which gas is known as the 'laughing gas'?",
+      "optionText": "Oxygen",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "Which gas is known as the 'laughing gas'?",
+      "optionText": "Helium",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which metal is used as a catalyst in the Haber process for ammonia synthesis?",
+      "optionText": "Iron",
+      "isCorrect": true,
+      "type": "A"
+    },
+    {
+      "questionText": "Which metal is used as a catalyst in the Haber process for ammonia synthesis?",
+      "optionText": "Aluminum",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "Which metal is used as a catalyst in the Haber process for ammonia synthesis?",
+      "optionText": "Copper",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "Which metal is used as a catalyst in the Haber process for ammonia synthesis?",
+      "optionText": "Gold",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the process of converting a solid directly into a gas called?",
+      "optionText": "Sublimation",
+      "isCorrect": true,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the process of converting a solid directly into a gas called?",
+      "optionText": "Evaporation",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the process of converting a solid directly into a gas called?",
+      "optionText": "Condensation",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the process of converting a solid directly into a gas called?",
+      "optionText": "Melting",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which type of bonding is formed between two nonmetal atoms?",
+      "optionText": "Covalent bonding",
+      "isCorrect": true,
+      "type": "A"
+    },
+    {
+      "questionText": "Which type of bonding is formed between two nonmetal atoms?",
+      "optionText": "Ionic bonding",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "Which type of bonding is formed between two nonmetal atoms?",
+      "optionText": "Metallic bonding",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "Which type of bonding is formed between two nonmetal atoms?",
+      "optionText": "Hydrogen bonding",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the unit of electrical resistance?",
+      "optionText": "Ohm",
+      "isCorrect": true,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the unit of electrical resistance?",
+      "optionText": "Volt",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the unit of electrical resistance?",
+      "optionText": "Ampere",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the unit of electrical resistance?",
+      "optionText": "Watt",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which component is used to store electrical charge?",
+      "optionText": "Resistor",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "Which component is used to store electrical charge?",
+      "optionText": "Capacitor",
+      "isCorrect": true,
+      "type": "B"
+    },
+    {
+      "questionText": "Which component is used to store electrical charge?",
+      "optionText": "Diode",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "Which component is used to store electrical charge?",
+      "optionText": "Transistor",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the basic function of a diode?",
+      "optionText": "Amplification",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the basic function of a diode?",
+      "optionText": "Switching",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the basic function of a diode?",
+      "optionText": "Rectification",
+      "isCorrect": true,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the basic function of a diode?",
+      "optionText": "Oscillation",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which component amplifies the electrical signals?",
+      "optionText": "Resistor",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "Which component amplifies the electrical signals?",
+      "optionText": "Capacitor",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "Which component amplifies the electrical signals?",
+      "optionText": "Diode",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "Which component amplifies the electrical signals?",
+      "optionText": "Transistor",
+      "isCorrect": true,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the unit of electric current?",
+      "optionText": "Ohm",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the unit of electric current?",
+      "optionText": "Volt",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the unit of electric current?",
+      "optionText": "Ampere",
+      "isCorrect": true,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the unit of electric current?",
+      "optionText": "Watt",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the output of a 2-input NAND gate if both inputs are LOW (logic 0)?",
+      "optionText": "HIGH (logic 1)",
+      "isCorrect": true,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the output of a 2-input NAND gate if both inputs are LOW (logic 0)?",
+      "optionText": "LOW (logic 0)",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the output of a 2-input NAND gate if both inputs are LOW (logic 0)?",
+      "optionText": "Undefined",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the output of a 2-input NAND gate if both inputs are LOW (logic 0)?",
+      "optionText": "Don't care",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which gate is used to perform addition in digital circuits?",
+      "optionText": "AND gate",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "Which gate is used to perform addition in digital circuits?",
+      "optionText": "NOR gate",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "Which gate is used to perform addition in digital circuits?",
+      "optionText": "XOR gate",
+      "isCorrect": true,
+      "type": "C"
+    },
+    {
+      "questionText": "Which gate is used to perform addition in digital circuits?",
+      "optionText": "NOT gate",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the output of a 2-input XOR gate if both inputs are HIGH (logic 1)?",
+      "optionText": "HIGH (logic 1)",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the output of a 2-input XOR gate if both inputs are HIGH (logic 1)?",
+      "optionText": "LOW (logic 0)",
+      "isCorrect": true,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the output of a 2-input XOR gate if both inputs are HIGH (logic 1)?",
+      "optionText": "Undefined",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the output of a 2-input XOR gate if both inputs are HIGH (logic 1)?",
+      "optionText": "Don't care",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the output of a 2-input NOR gate if both inputs are LOW (logic 0)?",
+      "optionText": "HIGH (logic 1)",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the output of a 2-input NOR gate if both inputs are LOW (logic 0)?",
+      "optionText": "LOW (logic 0)",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the output of a 2-input NOR gate if both inputs are LOW (logic 0)?",
+      "optionText": "Undefined",
+      "isCorrect": true,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the output of a 2-input NOR gate if both inputs are LOW (logic 0)?",
+      "optionText": "Don't care",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which gate is also known as a universal gate?",
+      "optionText": "AND gate",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "Which gate is also known as a universal gate?",
+      "optionText": "NAND gate",
+      "isCorrect": true,
+      "type": "B"
+    },
+    {
+      "questionText": "Which gate is also known as a universal gate?",
+      "optionText": "OR gate",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "Which gate is also known as a universal gate?",
+      "optionText": "XOR gate",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which logic gate is also known as the 'Inverter'?",
+      "optionText": "AND gate",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "Which logic gate is also known as the 'Inverter'?",
+      "optionText": "OR gate",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "Which logic gate is also known as the 'Inverter'?",
+      "optionText": "NOT gate",
+      "isCorrect": true,
+      "type": "C"
+    },
+    {
+      "questionText": "Which logic gate is also known as the 'Inverter'?",
+      "optionText": "XOR gate",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which gate among the following is called the 'Universal Gate'?",
+      "optionText": "AND gate",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "Which gate among the following is called the 'Universal Gate'?",
+      "optionText": "NOR gate",
+      "isCorrect": true,
+      "type": "B"
+    },
+    {
+      "questionText": "Which gate among the following is called the 'Universal Gate'?",
+      "optionText": "NOT gate",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "Which gate among the following is called the 'Universal Gate'?",
+      "optionText": "XOR gate",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "Which logic gate produces an output that is the complement of its input?",
+      "optionText": "AND gate",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "Which logic gate produces an output that is the complement of its input?",
+      "optionText": "NOR gate",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "Which logic gate produces an output that is the complement of its input?",
+      "optionText": "NOT gate",
+      "isCorrect": true,
+      "type": "C"
+    },
+    {
+      "questionText": "Which logic gate produces an output that is the complement of its input?",
+      "optionText": "XOR gate",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the output of the AND gate if both inputs are LOW (logic 0)?",
+      "optionText": "HIGH (logic 1)",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the output of the AND gate if both inputs are LOW (logic 0)?",
+      "optionText": "LOW (logic 0)",
+      "isCorrect": true,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the output of the AND gate if both inputs are LOW (logic 0)?",
+      "optionText": "Undefined",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the output of the AND gate if both inputs are LOW (logic 0)?",
+      "optionText": "Don't care",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the output of the OR gate if one input is HIGH (logic 1) and the other input is LOW (logic 0)?",
+      "optionText": "HIGH (logic 1)",
+      "isCorrect": true,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the output of the OR gate if one input is HIGH (logic 1) and the other input is LOW (logic 0)?",
+      "optionText": "LOW (logic 0)",
+      "isCorrect": false,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the output of the OR gate if one input is HIGH (logic 1) and the other input is LOW (logic 0)?",
+      "optionText": "Undefined",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the output of the OR gate if one input is HIGH (logic 1) and the other input is LOW (logic 0)?",
+      "optionText": "Don't care",
+      "isCorrect": false,
+      "type": "D"
+    },
+    {
+      "questionText": "What is the output of the XOR gate if both inputs are the same?",
+      "optionText": "HIGH (logic 1)",
+      "isCorrect": false,
+      "type": "A"
+    },
+    {
+      "questionText": "What is the output of the XOR gate if both inputs are the same?",
+      "optionText": "LOW (logic 0)",
+      "isCorrect": true,
+      "type": "B"
+    },
+    {
+      "questionText": "What is the output of the XOR gate if both inputs are the same?",
+      "optionText": "Undefined",
+      "isCorrect": false,
+      "type": "C"
+    },
+    {
+      "questionText": "What is the output of the XOR gate if both inputs are the same?",
+      "optionText": "Don't care",
+      "isCorrect": false,
+      "type": "D"
+    }
+  
+  
+      
+  ]
